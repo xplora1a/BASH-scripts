@@ -1,0 +1,16 @@
+#! /bin/bash
+for dir in *
+do
+    if test -d "${dir}"
+	then
+	    echo "starting directory ${dir}/"
+            cd "${dir}"
+			if test -d .git
+			then
+				git pull
+			fi
+			cd ../
+	    echo "finished directory ${dir}/"
+	fi
+done
+

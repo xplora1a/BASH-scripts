@@ -1,0 +1,11 @@
+#! /bin/bash
+for dir in *
+do
+    if test -d "${dir}"
+	then
+	    echo "starting directory ${dir}/"
+            rsync -av "${dir}/" "gnubee.lan:projects/${dir}/"
+	    echo "finished directory ${dir}/"
+	fi
+done
+
