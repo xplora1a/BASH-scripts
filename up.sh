@@ -23,6 +23,7 @@ if [ "$installed" != "$version" ]; then
     else
         echo "Zoom is not up to date. Getting latest version."
         curl -L -o "${HOME}"/Downloads/zoom_amd64-"${version}".deb https://zoom.us/client/latest/zoom_amd64.deb
+		echo "Install with command: sudo dpkg -i ~/Downloads/zoom_amd64-${version}.deb"
     fi
 fi
 if [ -x ~/Documents/settings/"${sname}"/ssh ]; then
