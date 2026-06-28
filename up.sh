@@ -18,8 +18,12 @@ version=$(echo "$location" | sed -E 's#.*prod/([0-9.]+)/.*#\1#')
 installed=$(dpkg -s zoom | grep "Version:" | awk '{print $2}')
 echo "Installed version: $installed Latest version: $version"
 if [ "$installed" != "$version" ]; then
-    echo "Zoom is not up to date. Getting latest version."
-    curl -L -o "${HOME}"/Downloads/zoom_amd64-"${version}".deb https://zoom.us/client/latest/zoom_amd64.deb    
+    if [ -f "${HOME}"/Downloads/zoom_amd64-"${version}".deb ]; then
+        echo "Zoom is not up to date. Latest version already downloaded."
+    else
+        echo "Zoom is not up to date. Getting latest version."
+        curl -L -o "${HOME}"/Downloads/zoom_amd64-"${version}".deb https://zoom.us/client/latest/zoom_amd64.deb
+    fi
 fi
 if [ -x ~/Documents/settings/"${sname}"/ssh ]; then
 	echo "Backing up ssh config"
