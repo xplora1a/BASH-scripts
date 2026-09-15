@@ -11,6 +11,10 @@ if [ -x /usr/bin/snap ]; then
 	echo "Snap updates"
 	sudo snap refresh
 fi
+if [ -x /usr/bin/yt-dlp ]; then
+    echo "Updating yt-dlp"
+    sudo yt-dlp -U
+fi
 echo "Check the version of Zoom available"
 location=$(curl -L -i -s --max-redirs 0 https://zoom.us/client/latest/zoom_amd64.deb | grep "location:")
 version=$(echo "$location" | sed -E 's#.*prod/([0-9.]+)/.*#\1#')
