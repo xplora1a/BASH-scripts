@@ -39,6 +39,8 @@ if command -v zoom >/dev/null 2>&1; then
                 echo "Zoom is not up to date. Getting latest version."
                 curl -L -o "${HOME}"/Downloads/zoom_amd64-"${version}".deb https://zoom.us/client/latest/zoom_amd64.deb
             fi
+            echo "Installing Zoom ${version}."
+            sudo apt install -y "${HOME}"/Downloads/zoom_amd64-"${version}".deb
         fi
     fi
 fi
